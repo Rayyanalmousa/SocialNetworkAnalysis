@@ -37,6 +37,10 @@ class main():
     user1=(123,"Rayyan")
     user2=(456,"Leen")
     user3=(789,"David")
-    Graph().addUser(user1)
-    Graph().addUser(user2)
-    Graph().addUser(user3)
+    graph=Graph()
+#Add the users to the graph
+    graph.addUser(user1)
+    graph.addUser(user2)
+    graph.addUser(user3)
+    graph.removeUser(user3)
+main()
