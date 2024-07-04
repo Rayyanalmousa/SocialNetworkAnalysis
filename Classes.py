@@ -8,6 +8,11 @@ class Graph:
         if ID1 in self.users and ID2 in self.users:
             self.users[ID1].Add[ID2]
             self.users[ID2].Add[ID1] 
+    def removeUser(self,ID):
+        if ID in self.users:
+            self.users.pop(ID)
+            user.Remove(ID)
+
 class User:
     def __init__(self,ID,Name,Friends):
         self.ID=ID
