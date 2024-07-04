@@ -3,7 +3,11 @@ class Graph:
         self.users={} 
     def addUser(self,user):
         if user.ID not in self.users:
-            self.users[user.ID]=user   
+            self.users[user.ID]=user  
+    def addRelationship(self,ID1,ID2):
+        if ID1 in self.users and ID2 in self.users:
+            self.users[ID1].Add[ID2]
+            self.users[ID2].Add[ID1] 
 class User:
     def __init__(self,ID,Name,Friends):
         self.ID=ID
