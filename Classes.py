@@ -38,3 +38,5 @@ class main():
     user2=(456,"Leen")
     user3=(789,"David")
     Graph().addUser(user1)
+    Graph().addUser(user2)
+    Graph().addUser(user3)
