@@ -11,7 +11,7 @@ class Graph:
     def removeUser(self,ID):
         if ID in self.users:
             self.users.pop(ID)
-            user.Remove(ID)
+            self.users[ID].Remove(ID)
     def removeRelationship(self,ID1,ID2):
         if ID1 in self.users and ID2 in self.users:
             self.users[ID1].Remove(ID2)
@@ -32,8 +32,8 @@ class User:
     def ListOfFriends(self):
         return self.Friends
     def __str__(self):
-        return "ID",self.ID,"Name",self.Name,"Friends",ListOfFriends(Friends)
-class main():
+        return "ID",self.ID,"Name",self.Name,"Friends"
+def main():
     user1=(123,"Rayyan")
     user2=(456,"Leen")
     user3=(789,"David")
