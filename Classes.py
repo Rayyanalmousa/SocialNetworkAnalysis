@@ -1,3 +1,9 @@
+class Graph:
+    def __init__(self):
+        self.users={} 
+    def addUser(self,user):
+        if user.ID not in self.users:
+            self.users[user.ID]=user   
 class User:
     def __init__(self,ID,Name,Friends):
         self.ID=ID
