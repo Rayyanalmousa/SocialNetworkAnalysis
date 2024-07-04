@@ -6,13 +6,19 @@ class Graph:
             self.users[user.ID]=user  
     def addRelationship(self,ID1,ID2):
         if ID1 in self.users and ID2 in self.users:
-            self.users[ID1].Add[ID2]
-            self.users[ID2].Add[ID1] 
+            self.users[ID1].Add(ID2)
+            self.users[ID2].Add(ID1)
     def removeUser(self,ID):
         if ID in self.users:
             self.users.pop(ID)
             user.Remove(ID)
-
+    def removeRelationship(self,ID1,ID2):
+        if ID1 in self.users and ID2 in self.users:
+            self.users[ID1].Remove(ID2)
+            self.users[ID2].Remove(ID1)
+    def friends(self,ID):
+        if ID in self.users:
+            self.users[ID].ListOfFriends()        
 class User:
     def __init__(self,ID,Name,Friends):
         self.ID=ID
