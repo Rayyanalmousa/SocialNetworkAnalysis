@@ -1,11 +1,11 @@
 class Graph:
     def __init__(self):
-        self.users={} 
+        self.users = {} 
 
 
     def addUser(self,user):
         if user.ID not in self.users:
-            self.users[user.ID]=user 
+            self.users[user.ID] = user 
 
 
     def addRelationship(self,ID1,ID2):
@@ -30,29 +30,43 @@ class Graph:
             return self.users[ID].listOfFriends()        
 class User:
     def __init__(self,ID,name,**interests):
-        self.ID=ID
-        self.name=name
-        self.friends=set() 
+        self.ID = ID
+        self.name = name
+        self.friends = set() 
         for key ,value in interests.items():
             setattr(self,key,value)  
+
+
     def addFriend(self,friend):
         self.friends.add(friend)
+
+
     def removeFriend(self,friend):
         if friend in self.friends:
             self.friends.remove(friend)
+
+
     def listOfFriends(self):
         return self.friends
+    
+
     def __str__(self):
-        return "ID",self.ID,"Name",self.name,"Friends"
+        return "ID: {}, Name: {}, Friends: {}".format(self.ID, self.name, self.friends)
+    
+
     def updateProfile(self,**interests):
         for key ,value in interests.items():
             setattr(self,key,value)
+
+
 def main():
-    user1=(123,"Rayyan")
-    user2=(456,"Leen")
-    user3=(789,"David")
-    user4=(124,"Leo")
-    graph=Graph()
+    user1 = (123,"Rayyan")
+    user2 = (456,"Leen")
+    user3 = (789,"David")
+    user4 = (124,"Leo")
+    graph = Graph()
+
+    
 #Add the users to the graph
     graph.addUser(user1)
     graph.addUser(user2)
