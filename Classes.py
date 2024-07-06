@@ -1,24 +1,33 @@
 class Graph:
     def __init__(self):
         self.users={} 
+
+
     def addUser(self,user):
         if user.ID not in self.users:
-            self.users[user.ID]=user  
+            self.users[user.ID]=user 
+
+
     def addRelationship(self,ID1,ID2):
         if ID1 in self.users and ID2 in self.users:
-            self.users[ID1].Add(ID2)
-            self.users[ID2].Add(ID1)
+            self.users[ID1].addFriend(ID2)
+            self.users[ID2].addFriend(ID1)
+
+
     def removeUser(self,ID):
         if ID in self.users:
             self.users.pop(ID)
-            self.users[ID].Remove(ID)
+
+            
     def removeRelationship(self,ID1,ID2):
         if ID1 in self.users and ID2 in self.users:
-            self.users[ID1].remove(ID2)
-            self.users[ID2].remove(ID1)
+            self.users[ID1].removeFriend(ID2)
+            self.users[ID2].removeFriend(ID1)
+
+
     def friends(self,ID):
         if ID in self.users:
-            self.users[ID].listOfFriends()        
+            return self.users[ID].listOfFriends()        
 class User:
     def __init__(self,ID,name,**interests):
         self.ID=ID
