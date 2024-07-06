@@ -34,7 +34,8 @@ class User:
     def __str__(self):
         return "ID",self.ID,"Name",self.Name,"Friends"
     def updateProfile(self,**interests):
-        
+        for key ,value in interests.items():
+            setattr(self,key,value)
 def main():
     user1=(123,"Rayyan")
     user2=(456,"Leen")
