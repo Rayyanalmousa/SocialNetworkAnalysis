@@ -20,10 +20,10 @@ class Graph:
         if ID in self.users:
             self.users[ID].ListOfFriends()        
 class User:
-    def __init__(self,ID,Name):
+    def __init__(self,ID,Name,**interests):
         self.ID=ID
         self.Name=Name
-       
+        self.Friends=set()   
     def Add(self,Friend):
         self.Friends.add(Friend)
     def Remove(self,Friend):
