@@ -23,7 +23,9 @@ class User:
     def __init__(self,ID,Name,**interests):
         self.ID=ID
         self.Name=Name
-        self.Friends=set()   
+        self.Friends=set() 
+        for key ,value in interests.items():
+            setattr(self,key,value)  
     def Add(self,Friend):
         self.Friends.add(Friend)
     def Remove(self,Friend):
