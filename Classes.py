@@ -43,7 +43,7 @@ class User:
 
 
     def addFriend(self,friend):
-        set().add(friend)
+        self.friends.add(friend)
         
 
 
@@ -79,8 +79,8 @@ def main():
     graph.addUser(user3)
     graph.addUser(user4)
     graph.removeUser(user3)
-    User.addFriend(123,789)
-    User.addFriend(124,456)
-    User.removeFriend(123,789)
+    graph.addFriend(123,789)
+    graph.addFriend(124,456)
+    graph.removeFriend(123,789)
     print(graph)
 main() 
