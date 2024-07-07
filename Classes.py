@@ -59,12 +59,12 @@ class User:
 
 
     def __str__(self):
-        return "ID: {}, Name: {}, Friends: {}".format(self.ID, self.name, self.friends)
+        return "ID: {}, Name: {}, Friends: {},interests:{}".format(self.ID, self.name, self.friends,self.interests)
     
 
     
 def main():
-    user1 = (123,"Rayyan","animals") 
+    user1 = (123,"Rayyan","animals,shopping") 
     user2 = (456,"Leen","books")
     user3 = (789,"David","cars")
     user4 = (124,"Leo","animals")
@@ -85,5 +85,5 @@ def main():
     graph.removeRelationship(123,789)
 
     print(graph)
-    
+
 main() 
