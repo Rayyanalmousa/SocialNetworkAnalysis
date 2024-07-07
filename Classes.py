@@ -4,8 +4,9 @@ class Graph:
 
 
     def addUser(self,user):
-        if user[0] not in self.users:
-            self.users[user[0]] = User(*user)
+        ID,name=user
+        if ID not in self.users:
+            self.users[ID] = User(ID,name)
         
 
     def addRelationship(self,ID1,ID2):
@@ -47,7 +48,7 @@ class User:
 
 
     def removeFriend(self,friend):
-        if friend in set():
+        if friend in self.friends:
             self.friends.remove(friend)
 
 
@@ -81,5 +82,5 @@ def main():
     User.addFriend(123,789)
     User.addFriend(124,456)
     User.removeFriend(123,789)
-   
+    print(graph)
 main() 
