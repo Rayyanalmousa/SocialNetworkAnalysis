@@ -4,9 +4,9 @@ class Graph:
 
 
     def addUser(self,user):
-        ID,name=user
+        ID,name,*interests = user
         if ID not in self.users:
-            self.users[ID] = User(ID,name)
+            self.users[ID] = User(ID,name,interests)
         
 
     def addRelationship(self,ID1,ID2):
@@ -19,9 +19,7 @@ class Graph:
         if ID in self.users:
             self.users.pop(ID)
             
-        
-
-            
+                
     def removeRelationship(self,ID1,ID2):
         if ID1 in self.users and ID2 in self.users:
             self.users[ID1].removeFriend(ID2)
