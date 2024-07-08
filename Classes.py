@@ -31,7 +31,7 @@ class Graph:
             return self.users[ID].listOfFriends()
     
     
-    def bfs(self,ID):
+    def bfs(self,start):
         visited =set()
         queue = [start]
         result = []
@@ -55,7 +55,11 @@ class Graph:
             node = stack.pop()
             if node not in visited:
                 visited.add(node)
-
+                result.append(str(self.users[node]))
+                for ID in self.friends(node)[::-1]:
+                    if ID not in visited:
+                        stack.append(ID)
+        return result                
     def __str__(self):
         return "\n".join(str(user) for user in self.users.values())
 
@@ -110,5 +114,8 @@ def main():
     graph.removeRelationship(123,789)
 
     print(graph)
-
+    print("BFS from ID 456:", graph.bfs(456))
+    print("DFS from ID 456:", graph.dfs(456))
+    print("BFS from ID 123:", graph.bfs(789))
+    print("DFS from ID 123:", graph.dfs(789))
 main() 
