@@ -41,7 +41,7 @@ class Graph:
                 for friend in self.users[node].listOfFriends():
                     if friend not in visited:
                         queue.append
-
+    def dfs(self)
 
 
     def __str__(self):
