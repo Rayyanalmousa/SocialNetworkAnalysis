@@ -38,7 +38,9 @@ class Graph:
             if node not in visited:
                 visited.add(node)
                 result.append(node)
-                for self.friends in self.users[node].listOfFriends():
+                for friend in self.users[node].listOfFriends():
+                    if friend not in visited:
+                        queue.append
 
 
 
