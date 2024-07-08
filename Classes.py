@@ -29,6 +29,8 @@ class Graph:
     def friends(self,ID):
         if ID in self.users:
             return self.users[ID].listOfFriends()
+    
+    
     def bfs(self,ID):
         visited =set()
         queue = [start]
@@ -40,10 +42,19 @@ class Graph:
                 result.append(node)
                 for friend in self.users[node].listOfFriends():
                     if friend not in visited:
-                        queue.append
+                        queue.append(friend)
         return result                
-    def dfs(self)
-
+    
+    
+    def dfs(self,start):
+        visited = set()
+        stack = []
+        result = []
+        stack.append(start)
+        while stack:
+            node = stack.pop()
+            if node not in visited:
+                visited.add(node)
 
     def __str__(self):
         return "\n".join(str(user) for user in self.users.values())
