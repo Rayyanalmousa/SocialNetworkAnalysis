@@ -38,7 +38,8 @@ class Graph:
             if node not in visited:
                 visited.add(node)
                 result.append(node)
-                
+                for self.friends in self.users[node].listOfFriends():
+
 
 
     def __str__(self):
