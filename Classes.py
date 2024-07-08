@@ -29,6 +29,10 @@ class Graph:
     def friends(self,ID):
         if ID in self.users:
             return self.users[ID].listOfFriends()
+    def bfs(self,ID):
+        visited =set()
+        queue = [start]
+        result = []
 
 
     def __str__(self):
