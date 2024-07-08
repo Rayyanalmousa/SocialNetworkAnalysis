@@ -33,6 +33,12 @@ class Graph:
         visited =set()
         queue = [start]
         result = []
+        while queue:
+            node =queue.pop(0)
+            if node not in visited:
+                visited.add(node)
+                result.append(node)
+                
 
 
     def __str__(self):
