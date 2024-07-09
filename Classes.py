@@ -59,7 +59,17 @@ class Graph:
                 for ID in self.friends(node)[::-1]:
                     if ID not in visited:
                         stack.append(ID)
-        return result                
+        return result  
+    def dijksra (graph,start):
+        previous = {v: None for v in graph.adjacency_list.keys{}}
+        visited = {v: False for v in graph.adjacency_list.keys{}} 
+        distances = {v: float("inf") for v in graph.adjacency_list.keys{}} 
+        distances[start] = 0 
+        queue = PriorityQueue()
+        queue.add_task(0, start)
+        
+    
+
     def __str__(self):
         return "\n".join(str(user) for user in self.users.values())
 
@@ -89,9 +99,7 @@ class User:
 
     def __str__(self):
         return "ID: {}, Name: {}, Friends: {},interests:{}".format(self.ID, self.name, self.friends,self.interests)
-    
 
-    
 def main():
     user1 = (123,"Rayyan","animals,shopping") 
     user2 = (456,"Leen","books")
@@ -116,6 +124,6 @@ def main():
     print(graph)
     print("BFS from ID 456:", graph.bfs(456))
     print("DFS from ID 456:", graph.dfs(456))
-    print("BFS from ID 123:", graph.bfs(789))
-    print("DFS from ID 123:", graph.dfs(789))
-main() 
+    print("BFS from ID 789:", graph.bfs(789))
+    print("DFS from ID 789:", graph.dfs(789))
+main()     
