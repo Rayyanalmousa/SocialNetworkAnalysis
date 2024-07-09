@@ -73,7 +73,7 @@ class Graph:
         while not queue.empty():
             removed_distance, removed = queue.get()
             visited[removed] = True
-            for neighbor in self.adjacency_list[removed]:
+            for neighbor in  self.[removed]:
                 if visited[neighbor]:
                     continue
                 new_distance = removed_distance + 1  
@@ -140,4 +140,6 @@ def main():
     print("DFS from ID 456:", graph.dfs(456))
     print("BFS from ID 789:", graph.bfs(789))
     print("DFS from ID 789:", graph.dfs(789))
+
+    print("Dijkstra's shortest distances from ID 123:", graph.dijkstra(123))
 main()     
