@@ -2,7 +2,7 @@ from queue import PriorityQueue
 class Graph:
     def __init__(self):
         self.users = {} 
-
+        self.adjacency_list = {}
 
     def addUser(self,user):
         ID,name,*interests = user
@@ -73,7 +73,7 @@ class Graph:
         while not queue.empty():
             removed_distance, removed = queue.get()
             visited[removed] = True
-            for neighbor in  self.[removed]:
+            for neighbor in self.adjacency_list[removed]:
                 if visited[neighbor]:
                     continue
                 new_distance = removed_distance + 1  
