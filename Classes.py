@@ -61,7 +61,15 @@ class Graph:
                     if ID not in visited:
                         stack.append(ID)
         return result 
+    
+    def sortUsersByName(self):
+        sorted_users = sorted(self.users.values(), key=lambda user: user.name)
+        return sorted_users
+    
 
+    def sortUsersByNumFriends(self):
+        sorted_users = sorted(self.users.values(), key=lambda user: len(user.friends), reverse=True)
+        return sorted_users
 
     def dijkstra(self, start):
         previous = {v: None for v in self.users.keys()}
@@ -83,7 +91,7 @@ class Graph:
                     queue.put((new_distance, neighbor))
         return distances
     
-
+    
     def __str__(self):
         return "\n".join(str(user) for user in self.users.values())
 
