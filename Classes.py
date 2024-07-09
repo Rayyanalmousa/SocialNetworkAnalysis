@@ -195,7 +195,7 @@ def main():
     print("Dijkstra's shortest distances from ID 123:", graph.dijkstra(123))
     print("Unsorted users in the graph:")
     print(graph)
-
+    
     sorted_by_name = graph.sortUsersByName()
     print("\nUsers sorted by name:")
     for user in sorted_by_name:
