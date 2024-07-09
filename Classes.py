@@ -193,9 +193,12 @@ def main():
     print("DFS from ID 789:", graph.dfs(789))
 
     print("Dijkstra's shortest distances from ID 123:", graph.dijkstra(123))
+    
+    #displaying unsorted graph
     print("Unsorted users in the graph:")
     print(graph)
-    
+
+    #displaying sorted graph
     sorted_by_name = graph.sortUsersByName()
     print("\nUsers sorted by name:")
     for user in sorted_by_name:
