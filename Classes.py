@@ -1,3 +1,4 @@
+from queue import PriorityQueue
 class Graph:
     def __init__(self):
         self.users = {} 
@@ -59,15 +60,28 @@ class Graph:
                 for ID in self.friends(node)[::-1]:
                     if ID not in visited:
                         stack.append(ID)
-        return result  
-    def dijksra (graph,start):
-        previous = {v: None for v in graph.adjacency_list.keys{}}
-        visited = {v: False for v in graph.adjacency_list.keys{}} 
-        distances = {v: float("inf") for v in graph.adjacency_list.keys{}} 
-        distances[start] = 0 
+        return result 
+
+
+    def dijkstra(self, start):
+        previous = {v: None for v in self.users.keys()}
+        visited = {v: False for v in self.users.keys()}
+        distances = {v: float("inf") for v in self.users.keys()}
+        distances[start] = 0
         queue = PriorityQueue()
-        queue.add_task(0, start)
-        
+        queue.put((0, start))
+        while not queue.empty():
+            removed_distance, removed = queue.get()
+            visited[removed] = True
+            for neighbor in self.adjacency_list[removed]:
+                if visited[neighbor]:
+                    continue
+                new_distance = removed_distance + 1  
+                if new_distance < distances[neighbor]:
+                    distances[neighbor] = new_distance
+                    previous[neighbor] = removed
+                    queue.put((new_distance, neighbor))
+        return distances
     
 
     def __str__(self):
