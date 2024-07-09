@@ -101,7 +101,6 @@ class Graph:
     def merge(self, users_list, left, mid, right, key):
         left_size = mid - left + 1
         right_size = right - mid
-
         left_lst = [0] * left_size
         right_lst = [0] * right_size
 
@@ -109,13 +108,13 @@ class Graph:
             left_lst[i] = lst[left + i]
         for j in range(right_size):
             right_lst[j] = lst[mid + 1 + j]
+        left_lst = users_list[left:left + left_size]
+        right_lst = users_list[mid + 1:mid + 1 + right_size]
 
         index_l = 0
         index_r = 0
         index_merged = left
-
         while index_l < left_size and index_r < right_size:
-            if left_lst[index_l] <= right_lst[index_r]:
                 lst[index_merged] = left_lst[index_l]
                 index_l += 1
             else:
