@@ -98,7 +98,7 @@ class Graph:
             self.mergeSort(users_list, mid + 1, right, key)
             self.merge(users_list, left, mid, right, key)
 
-
+    def merge(self, users_list, left, mid, right, key):
         left_size = mid - left + 1
         right_size = right - mid
 
