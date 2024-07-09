@@ -99,7 +99,6 @@ class Graph:
             self.merge(users_list, left, mid, right, key)
 
 
-    def merge(self, lst, left, mid, right):
         left_size = mid - left + 1
         right_size = right - mid
 
