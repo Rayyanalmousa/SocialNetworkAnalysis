@@ -91,7 +91,49 @@ class Graph:
                     queue.put((new_distance, neighbor))
         return distances
     
-    
+    def mergeSort(self, users_list, left, right, key='name'):
+        if left < right:
+            mid = (left + right) // 2
+            self.mergeSort(users_list, left, mid, key)
+            self.mergeSort(users_list, mid + 1, right, key)
+            self.merge(users_list, left, mid, right, key)
+
+
+    def merge(self, lst, left, mid, right):
+        left_size = mid - left + 1
+        right_size = right - mid
+
+        left_lst = [0] * left_size
+        right_lst = [0] * right_size
+
+        for i in range(left_size):
+            left_lst[i] = lst[left + i]
+        for j in range(right_size):
+            right_lst[j] = lst[mid + 1 + j]
+
+        index_l = 0
+        index_r = 0
+        index_merged = left
+
+        while index_l < left_size and index_r < right_size:
+            if left_lst[index_l] <= right_lst[index_r]:
+                lst[index_merged] = left_lst[index_l]
+                index_l += 1
+            else:
+                lst[index_merged] = right_lst[index_r]
+                index_r += 1
+            index_merged += 1
+
+        while index_l < left_size:
+            lst[index_merged] = left_lst[index_l]
+            index_l += 1
+            index_merged += 1
+
+        while index_r < right_size:
+            lst[index_merged] = right_lst[index_r]
+            index_r += 1
+            index_merged += 1
+
     def __str__(self):
         return "\n".join(str(user) for user in self.users.values())
 
@@ -150,4 +192,19 @@ def main():
     print("DFS from ID 789:", graph.dfs(789))
 
     print("Dijkstra's shortest distances from ID 123:", graph.dijkstra(123))
+    print("Unsorted users in the graph:")
+    print(graph)
+
+    sorted_by_name = graph.sortUsersByName()
+    print("\nUsers sorted by name:")
+    for user in sorted_by_name:
+        print(user)
+
+    sorted_by_num_friends = graph.sortUsersByNumFriends()
+    print("\nUsers sorted by number of friends:")
+    for user in sorted_by_num_friends:
+        print(user)
+
+    
+    
 main()     
