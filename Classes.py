@@ -115,7 +115,6 @@ class Graph:
         index_r = 0
         index_merged = left
         while index_l < left_size and index_r < right_size:
-                lst[index_merged] = left_lst[index_l]
                 index_l += 1
             else:
                 lst[index_merged] = right_lst[index_r]
