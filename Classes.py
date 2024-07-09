@@ -124,7 +124,16 @@ class Graph:
                     index_r += 1
 
             index_merged += 1
-                
+
+        while index_l < left_size:
+            users_list[index_merged] = left_lst[index_l]
+            index_l += 1
+            index_merged += 1 
+        while index_r < right_size:
+            users_list[index_merged] = right_lst[index_r]
+            index_r += 1
+            index_merged += 1
+   
 
     def __str__(self):
         return "\n".join(str(user) for user in self.users.values())
