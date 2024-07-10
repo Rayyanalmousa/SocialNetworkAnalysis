@@ -150,7 +150,12 @@ class Graph:
                 users_list[i], users_list[j] = users_list[j], users_list[i]
         users_list[i + 1], users_list[right] = users_list[right], users_list[i + 1]
         return i + 1
-    
+    def compare(self, user1, user2, key):
+        if key == 'name':
+            return user1.name <= user2.name
+        elif key == 'friends':
+            return len(user1.friends) >= len(user2.friends)
+        return False
 
     def __str__(self):
         return "\n".join(str(user) for user in self.users.values())
