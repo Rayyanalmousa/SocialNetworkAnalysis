@@ -133,7 +133,13 @@ class Graph:
             users_list[index_merged] = right_lst[index_r]
             index_r += 1
             index_merged += 1
-   
+
+
+    def quicksort(self, users_list, left, right, key='name'):
+        if left < right:
+            pivot_index = self.partition(users_list, left, right, key)
+            self.quicksort(users_list, left, pivot_index - 1, key)
+            self.quicksort(users_list, pivot_index + 1, right, key)
 
     def __str__(self):
         return "\n".join(str(user) for user in self.users.values())
