@@ -141,6 +141,17 @@ class Graph:
             self.quicksort(users_list, left, pivot_index - 1, key)
             self.quicksort(users_list, pivot_index + 1, right, key)
 
+    def partition(self, users_list, left, right, key):
+        pivot = users_list[right]
+        i = left - 1
+        for j in range(left, right):
+            if self.compare(users_list[j], pivot, key):
+                i += 1
+                users_list[i], users_list[j] = users_list[j], users_list[i]
+        users_list[i + 1], users_list[right] = users_list[right], users_list[i + 1]
+        return i + 1
+    
+
     def __str__(self):
         return "\n".join(str(user) for user in self.users.values())
 
