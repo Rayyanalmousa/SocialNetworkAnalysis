@@ -211,6 +211,11 @@ class Graph:
 
         return numOfTriangles / numOfTriplets if numOfTriplets > 0 else 0
     
+    def displayStatistics(self):
+        print("\nNetwork Statistics:")
+        print(f"Average number of friends per user: {self.averageNumFriends():.2f}")
+        print(f"Network density: {self.networkDensity():.2f}")
+        print(f"Clustering coefficient: {self.clusteringCoefficient():.2f}")
 
     def __str__(self):
         return "\n".join(str(user) for user in self.users.values())
@@ -303,6 +308,7 @@ def main():
     else:
         print(f"\nUser with name '{searchForName}' not found.")
 
+    graph.displayStatistics()
     
     
 main()     
