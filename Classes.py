@@ -217,6 +217,29 @@ class Graph:
         print(f"Network density: {self.networkDensity():.2f}")
         print(f"Clustering coefficient: {self.clusteringCoefficient():.2f}")
 
+
+    def suggestFriendsByMutualConnectionsAndInterests(self, user_id, num_suggestions=5):
+        if user_id not in self.users:
+            print(f"User with ID {user_id} does not exist.")
+            return []
+        user = self.users[user_id]
+        user_friends = set(user.listOfFriends())
+        user_interests = set(user.interests)
+        friend_suggestions = {}
+        for friend_id, friend in self.users.items():
+            if friend_id != user_id and friend_id not in user_friends:
+                friend_friends = set(friend.listOfFriends())
+                mutual_connections = len(user_friends.intersection(friend_friends))
+                common_interests = len(user_interests.intersection(set(friend.interests)))
+                score = mutual_connections + common_interests
+
+                if score > 0:
+                    friend_suggestions[friend_id] = score
+        sorted_suggestions = sorted(friend_suggestions.items(), key=lambda x: x[1], reverse=True)
+        suggested_friends = [self.users[user][0] for user, score in sorted_suggestions][:num_suggestions]
+        return suggested_friends
+    
+
     def __str__(self):
         return "\n".join(str(user) for user in self.users.values())
 
