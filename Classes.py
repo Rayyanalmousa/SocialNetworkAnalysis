@@ -1,4 +1,5 @@
 from queue import PriorityQueue
+from itertools import combinations
 class Graph:
     def __init__(self):
         self.users = {} 
@@ -186,6 +187,29 @@ class Graph:
             return 0.0  
         total_friends = sum(len(user.friends) for user in self.users.values())
         return total_friends / len(self.users)
+    
+    def networkDensity(self):
+        num_users = len(self.users)
+        if num_users < 2:
+            return 0.0  
+        max_possible_connections = num_users * (num_users - 1) / 2
+        actual_connections = sum(len(friends) for friends in self.adjacency_list.values()) / 2
+        return actual_connections / max_possible_connections
+    
+    def clusteringCoefficient(self):
+        numOfTriangles = 0
+        numOfTriplets = 0
+        for user_id in self.adjacency_list:
+            neighbors = list(self.adjacency_list[user_id])
+            numOfNeighbors = len(neighbors)
+            if numOfNeighbors < 2:
+                continue  
+            numOfTriplets += numOfNeighbors * (numOfNeighbors - 1) / 2
+            for pair in combinations(neighbors, 2):
+                if pair[1] in self.adjacency_list[pair[0]]:
+                    numOfTriangles += 1  
+
+        return numOfTriangles / numOfTriplets if numOfTriplets > 0 else 0
     
 
     def __str__(self):
