@@ -179,6 +179,14 @@ class Graph:
         elif key == 'friends':
             return len(user1.friends) >= len(user2.friends)
         return False
+    
+
+    def averageNumFriends(self):
+        if not self.users:
+            return 0.0  
+        total_friends = sum(len(user.friends) for user in self.users.values())
+        return total_friends / len(self.users)
+    
 
     def __str__(self):
         return "\n".join(str(user) for user in self.users.values())
