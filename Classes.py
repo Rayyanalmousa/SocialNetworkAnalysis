@@ -254,6 +254,16 @@ def main():
     for user in sorted_by_num_friends:
         print(user)
 
+    searchForID = 123
+    index = graph.binarySearch(searchForID, key='ID')
+    if index != -1:
+        print(f"\nUser with ID {searchForID} found:")
+        print(graph.users[searchForID])
+    else:
+        print(f"\nUser with ID {searchForID} not found.")
+
+    
+
     
     
 main()     
