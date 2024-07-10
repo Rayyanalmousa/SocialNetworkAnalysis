@@ -332,6 +332,8 @@ def main():
         print(f"\nUser with name '{searchForName}' not found.")
 
     graph.displayStatistics()
-    
+    user_id = 123
+    print(f"Suggestions for user {user_id} based on mutual connections and common interests:")
+    print(graph.suggestFriendsByMutualConnectionsAndInterests(user_id))
     
 main()     
