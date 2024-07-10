@@ -150,6 +150,29 @@ class Graph:
                 users_list[i], users_list[j] = users_list[j], users_list[i]
         users_list[i + 1], users_list[right] = users_list[right], users_list[i + 1]
         return i + 1
+    
+    def binarySearch(self, k, key='ID'):
+        users_list = self.sortUsersByName() if key == 'name' else list(self.users.keys())
+        low, high = 0, len(users_list) - 1
+        while low <= high:
+            mid = (low + high) // 2
+            if key == 'ID':
+                if users_list[mid] == k:
+                    return mid
+                elif users_list[mid] < k:
+                    low = mid + 1
+                else:
+                    high = mid - 1
+            elif key == 'name':
+                if users_list[mid].name == k:
+                    return users_list[mid]
+                elif users_list[mid].name < k:
+                    low = mid + 1
+                else:
+                    high = mid - 1
+        return -1
+
+
     def compare(self, user1, user2, key):
         if key == 'name':
             return user1.name <= user2.name
