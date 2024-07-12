@@ -1,38 +1,39 @@
 from queue import PriorityQueue
 from itertools import combinations
+#creating a class
 class Graph:
     def __init__(self):
         self.users = {} 
         self.adjacency_list = {}
-
+    #function that add user
     def addUser(self,user):
         ID,name,*interests = user
         if ID not in self.users:
             self.users[ID] = User(ID,name,interests)
         
-
+    #function that add relathionship between 2 users 
     def addRelationship(self,ID1,ID2):
         if ID1 in self.users and ID2 in self.users:
             self.users[ID1].addFriend(ID2)
             self.users[ID2].addFriend(ID1)
 
-
+    #function that remove user
     def removeUser(self,ID):
         if ID in self.users:
             self.users.pop(ID)
             
-                
+    #function that remove relationship            
     def removeRelationship(self,ID1,ID2):
         if ID1 in self.users and ID2 in self.users:
             self.users[ID1].removeFriend(ID2)
             self.users[ID2].removeFriend(ID1)
 
-
+    #function that will list the friends
     def friends(self,ID):
         if ID in self.users:
             return self.users[ID].listOfFriends()
     
-    
+    #Breadth-First Search (BFS) 
     def bfs(self,start):
         visited =set()
         queue = [start]
@@ -47,7 +48,7 @@ class Graph:
                         queue.append(friend)
         return result                
     
-    
+    #Depth-First Search (DFS)
     def dfs(self,start):
         visited = set()
         stack = []
@@ -62,16 +63,16 @@ class Graph:
                     if ID not in visited:
                         stack.append(ID)
         return result 
-    
+    #sorting users by their names
     def sortUsersByName(self):
         sorted_users = sorted(self.users.values(), key=lambda user: user.name)
         return sorted_users
     
-
+    #sorting users by their friends number
     def sortUsersByNumFriends(self):
         sorted_users = sorted(self.users.values(), key=lambda user: len(user.friends), reverse=True)
         return sorted_users
-
+    #using dijkstra's algorithm to find the shortest path between two users
     def dijkstra(self, start):
         previous = {v: None for v in self.users.keys()}
         visited = {v: False for v in self.users.keys()}
@@ -135,7 +136,7 @@ class Graph:
             index_r += 1
             index_merged += 1
 
-
+    #quick sort function
     def quicksort(self, users_list, left, right, key='name'):
         if left < right:
             pivot_index = self.partition(users_list, left, right, key)
@@ -151,7 +152,7 @@ class Graph:
                 users_list[i], users_list[j] = users_list[j], users_list[i]
         users_list[i + 1], users_list[right] = users_list[right], users_list[i + 1]
         return i + 1
-    
+    # Binary search function 
     def binarySearch(self, k, key='ID'):
         users_list = self.sortUsersByName() if key == 'name' else list(self.users.keys())
         low, high = 0, len(users_list) - 1
@@ -210,7 +211,7 @@ class Graph:
                     numOfTriangles += 1  
 
         return numOfTriangles / numOfTriplets if numOfTriplets > 0 else 0
-    
+    #function that displays the statistics
     def displayStatistics(self):
         print("\nNetwork Statistics:")
         print(f"Average number of friends per user: {self.averageNumFriends():.2f}")
@@ -271,6 +272,7 @@ class User:
         return "ID: {}, Name: {}, Friends: {},interests:{}".format(self.ID, self.name, self.friends,self.interests)
 
 def main():
+    #creating users
     user1 = (123,"Rayyan","animals,shopping") 
     user2 = (456,"Leen","books")
     user3 = (789,"David","cars")
@@ -292,6 +294,7 @@ def main():
     graph.removeRelationship(123,789)
 
     print(graph)
+    #testing functions created above
     print("BFS from ID 456:", graph.bfs(456))
     print("DFS from ID 456:", graph.dfs(456))
     print("BFS from ID 789:", graph.bfs(789))
@@ -330,7 +333,7 @@ def main():
         print(user)
     else:
         print(f"\nUser with name '{searchForName}' not found.")
-
+    #showing statistics
     graph.displayStatistics()
     user_id = 123
     print(f"Suggestions for user {user_id} based on mutual connections and common interests:")
